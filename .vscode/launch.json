@@ -1,0 +1,17 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "go debug",
+            "type": "go",
+            "request": "attach",
+            "mode": "remote",
+            "remotePath": "/go/src/work",
+            "port": 2345,
+            "host": "localhost",
+            "cwd": "${workspaceRoot}/work",
+            "env": {},
+            "args": [],
+        }
+    ]
+}

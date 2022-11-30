@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+        h1 {
+            text-align: center;
+        }
+        .table{
+            width: 98%;
+            border-collapse: collapse;
+            border:1px solid #000000;
+            background-color:#FFFFFF;
+            color:#000000;
+            text-align:left;
+        }
+        .titleChart{
+            border:1px solid #000000;
+            background-color:#808080;
+            color:#FFFFFF;
+            text-align:center;
+        }
+        .mainChart{
+            border:1px solid #000000;
+            text-align:center;
+        }
+
+
+    </style>
+  </head>
+  <body>
+    <h1>golangで作るtodoアプリ</h1>
+    <form action="/conduct">
+        名前:
+            <input type="text" name="user">
+
+        <p>タスク:
+            <input type="text" name="task">
+        </p>
+        <p>
+            <input type="submit" value="送信">
+        </p>
+    </from>
+    <table class="table">
+        <tbody>
+            <tr>
+                <th class="titleChart">
+                    日付
+                </th>
+                <th class="titleChart">
+                    ユーザー
+                </th>
+                <th class="titleChart">
+                    ステータス
+                </th>
+                <th class="titleChart">
+                    タスク
+                </th>
+            </tr>
+            {{range .todo}}
+            <tr>
+                <form action="/done">
+                    <input type="hidden" name="ida" value="{{.ID}}">
+                    <input type="hidden" name="status" value="{{.Status}}">
+
+                    <td class="mainChart">
+                        {{.CreateDate}}
+                    </td>
+                    <td class="mainChart">
+                        {{.User}}
+                    </td>
+                    <td class="mainChart">
+                        {{.Task}}
+                    </td>
+                    <td class="mainChart">
+                        {{if eq .Status 0}}
+                            未完了
+                            <input type="submit" value="完了">
+                        {{else}}
+                            完了
+                            <input type="submit" value="未完了">
+                        {{end}}
+                    </td>
+
+                </from>
+            </tr>
+            {{end}}
+        </tbody>
+    </table>
+  </body>
+</html>

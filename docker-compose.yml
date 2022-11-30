@@ -1,0 +1,11 @@
+version: '3.8'
+services:
+  web:
+    container_name: go_test1
+    build: .
+    tty: true
+    volumes:
+      - ./app:/go/src/work
+    ports:
+      - 8080:8080
+      - 2345:2345
